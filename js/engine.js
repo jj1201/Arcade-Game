@@ -78,9 +78,16 @@ var Engine = (function(global) {
      * functionality this way (you could just implement collision detection
      * on the entities themselves within your app.js file).
      */
+     function checkCollisions(){
+        allEnemies.forEach(function(enemy) {
+            if(enemy.x + 50 >= player.x && enemy.x <= player.x + 50 && enemy.y == player.y) {
+                player.reset();
+            }
+        });
+     }
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        setTimeout(checkCollisions(), 1000);
     }
 
     /* This is called by the update function and loops through all of the
