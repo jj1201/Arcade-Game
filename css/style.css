@@ -1,3 +1,92 @@
-body {
-    text-align: center;
+html{
+	min-width: 950px;
+	width: auto !important;
+	width: 950px;
+	font-family: 'Ravi Prakash', cursive;
 }
+body {
+	background-image: url('../images/background.jpg');
+	background-size: cover;
+    text-align: center;
+    background-repeat: no-repeat;
+}
+
+.row {
+	display: none;
+	width: 100%;
+}
+
+.charPicker{
+	width: 700px;
+	margin: auto;
+	margin-top: calc(20% - 171px/2);
+	padding: 10px;
+}
+.charPicker header{
+	font-size: 60px;
+}
+.instruction{
+	width: calc((100% - 707px)/2);
+	float: left;
+	display: inline-block;
+	height: 100%;
+	padding-top: 100px;
+}
+.canvas_container{
+	float: center;
+	display: inline-block;
+}
+.game_data {
+	width: calc((100% - 707px)/2);
+	height:100%;
+	float: right;
+	display: inline-block;
+}
+.title {
+	float: center;
+	font-size: 60px;
+	color: #FF0000;
+}
+.level {
+	float: right;
+}
+
+.game_data ul{
+	margin-right: 0px;
+	text-align: left;
+	margin-top: 200px;
+	list-style-type: none;
+}
+
+.game_data li{
+	margin: 120px 0;
+	
+}
+.standard-font {
+	font-size: 32px;
+	color: orange;
+}
+.instruction span{
+	font-size: 32px;
+}
+.rules{
+	font-size: 24px;
+}
+.instruction p{
+	font-size: 48px;
+	color: #FFFF00;
+}
+.ending {
+	display: none;
+	font-size: 60px;
+	color: red;
+	margin-top: 20%;
+}
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+}
+

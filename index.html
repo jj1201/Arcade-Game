@@ -4,8 +4,46 @@
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ravi+Prakash" rel="stylesheet">
 </head>
 <body>
+	<div class="charPicker">
+		<header>Pick a character : </header>
+		<button id="char-boy"><img src="images/char-boy.png"></button>
+		<button id="char-cat-girl"><img src="images/char-cat-girl.png"></button>
+		<button id="char-horn-girl"><img src="images/char-horn-girl.png"></button>
+		<button id="char-pink-girl"><img src="images/char-pink-girl.png"></button>
+		<button id="char-princess-girl"><img src="images/char-princess-girl.png"></button>		
+	</div>
+	<div class="row">
+		<div class="instruction"><span>instruction:</span>
+		<ul class = "rules">
+			<li class="rule">Use 'up', 'down', 'left', 'right' to control the character.</li>
+			<li class="rule">Get all the gems on the map to enable the keys.</li>
+			<li class="rule">On the 3rd level, press 'space' and arrow key together to jump over walls</li>
+		</ul>
+		<p>have fun!</p>
+		</div>
+		<div class="canvas_container">
+			<div class="game_title"><span class="title"> Bug Invasion </span> <span class="level standard-font
+
+			"></span></div>
+			<canvas id="c" width="707" height="606"></canvas>
+		</div>
+		<div class="game_data"> 
+		<ul class = "standard-font">
+			<li><span class="label">Score: </span> <span class="score"></span></li>
+			<li><span class="label">Life: </span> <span class="life"></span></li>
+			<li><span class="label">Key: </span> <span class="key"></span></li>
+		</ul>
+		</div>
+	</div>
+	<div class="ending">
+		<p>Congradulations! Your total score is <span class = "totalScore"></span>!</p>
+		<button class="astext standard-font" id="restart">Restart</input>
+	</div>
+	
+	<script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
