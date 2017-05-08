@@ -1,6 +1,6 @@
 
 var canvasWidth = 707;
-var level = 2;
+var level = 0;
 var totalScore = 0;
 var layers = [
     {
