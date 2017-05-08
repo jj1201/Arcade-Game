@@ -10,7 +10,7 @@ it's a webpage game written mainly in javascript. The goal is to get as many gem
  * On the 3rd level, press 'space' and arrow key together to jump over walls.
 ### Ready to have fun
 
-[Bug invasion](https://jj1201.github.io/Bug-Invasion/)
+[Bug Invasion](https://jj1201.github.io/Bug-Invasion/)
 
 ### Links
 
