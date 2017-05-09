@@ -2,6 +2,25 @@
 var canvasWidth = 707;
 var level = 0;
 var totalScore = 0;
+var walksound = new Audio("sound/walk.wav");
+var enterWaterSound = new Audio("sound/enterWater.wav");
+var getFromChestSound = new Audio("sound/getFromChest.wav");
+var getGemSound = new Audio("sound/getGem.wav");
+var getKeySound = new Audio("sound/getKey.mp3");
+var openChestSound = new Audio("sound/openChest.wav");
+var openDoorSound = new Audio("sound/openDoor.wav");
+var errorSound = new Audio("sound/error.wav");
+var collisionSound = new Audio("sound/collision.wav");
+var gameOverSound = new Audio("sound/gameOver.wav");
+var nextLevelSound = new Audio("sound/nextLevel2.mp3");
+var buttonSound = new Audio("sound/button.wav");
+var congradsSound = new Audio("sound/congrads.wav");
+// var bgm = new Audio("sound/00.wav");
+// bgm.addEventListener('ended', function() {
+//     this.currentTime = 0;
+//     this.play();
+// }, false);
+// bgm.play();
 var layers = [
     {
         score : 0,
@@ -159,6 +178,7 @@ Player.prototype.update = function() {
     //get gems
     for(var i = 0; i < gemLoc.length; i++) {
         if(gemLoc[i][1] == (this.y + 20)/83 && gemLoc[i][0] == this.x/101) {
+            getGemSound.play();
             console.log("get gem");
             gemLoc[i][0] = -1;
             gemLoc[i][1] = -1;
@@ -173,6 +193,7 @@ Player.prototype.update = function() {
         for(var i = 0; i < keyLoc.length; i++) {
             if(keyLoc[i][1] == (this.y + 20)/83 && keyLoc[i][0] == this.x/101) {
                 console.log("get key");
+                getKeySound.play();
                 keyLoc[i][0] = -1;
                 keyLoc[i][1] = -1;
                 layers[level].keyGet++;
@@ -203,18 +224,22 @@ Player.prototype.handleInput = function(key) {
          console.log(key);
          if((((this.x / 101 === 1 || this.x / 101 === 5) && (this.y + 20)/83 === 3 && key === 'up') || ((this.x / 101 === 1 || this.x / 101 === 5) && (this.y + 20)/83 === 4 && key === 'down')) && this.underBridge) {
             console.log("underBridge trying to land");
+            errorSound.play();
             return;
         }
         if((key === 'left'  || key ==='right')&& this.inBridgeArea(this.x, this.y) && !this.inWater) {
             console.log("on bridge trying to move left or right");
+            errorSound.play();
             return;
         }
         if(key === 'left' && this.inBridgeArea(this.x - 101, this.y) && !this.inWater) {
             console.log("on the land trying to jump on the bridge");
+            errorSound.play();
             return;
         }
         if(key === 'right' && this.inBridgeArea(this.x + 101, this.y) && !this.inWater) {
             console.log("on the land trying to jump on the bridge");
+            errorSound.play();
             return;
         }
         //determine after the move if the player is underWater or not. 
@@ -248,18 +273,26 @@ Player.prototype.handleInput = function(key) {
         if(key === 'jumpup') {
             if((this.y + 20)/83 === 5 || (this.y + 20)/83 === 3) {
                 this.y -= 83 * 2;
+                enterWaterSound.play();
                 return;
             }
         }else if(key === 'jumpdown') {
              if(((this.y + 20)/83 === 1 || (this.y + 20)/83 === 3) && !meetTrees(this.x, this.y + 83*2) && !meetRocks(this.x, this.y + 83*2)) {
                 this.y += 83 * 2;
+                if((this.y + 20)/83 === 3) {
+                    walksound.play();
+                } else if((this.y + 20)/83 === 1) {
+                    enterWater.play();
+                }
                 return;
             }
         }
         if(key === 'up' && ((this.y + 20 - 83)/83 === 2 || (this.y + 20 - 83)/83 === 4)) {
+            errorSound.play();
             //can't jump on the wall
             return;
         }else if(key === 'down' && ((this.y + 20 + 83)/83 === 2 || (this.y + 20 + 83)/83 === 4)) {
+            errorSound.play();
             return;
         }
     }
@@ -268,24 +301,36 @@ Player.prototype.handleInput = function(key) {
     console.log(canvasWidth);
     console.log((this.x + 101) <= canvasWidth - 101);
     if(key === 'up' && layers[level].hiddenKeyGet === 1 && (this.x / 101) === 6 && ((this.y + 20 - 83)/83) === 0) {
+        walksound.play();
         this.y -= 83;
     }
     if(key === 'left' &&(this.x - 101) >= 0 && !meetTrees(this.x - 101, this.y) && !meetRocks(this.x - 101, this.y)) {
+        walksound.play();
         this.x -= 101;
     }else if(key === 'right' && (this.x + 101) <= canvasWidth - 101 && !meetTrees(this.x + 101, this.y) && !meetRocks(this.x + 101, this.y)) {
         console.log("move right");
+        walksound.play();
         this.x += 101;
     }
     else if(key === 'up' && (this.y - 83) > 0 && !meetTrees(this.x, this.y - 83) && !meetRocks(this.x, this.y - 83)) {
+        walksound.play();
         this.y -= 83;
     }
     else if(key === 'down' && (this.y + 83) <= 606 - 171 && !meetTrees(this.x, this.y + 83) && !meetRocks(this.x, this.y + 83)) {
+        walksound.play();
         this.y += 83;
     }
     if((this.x/101 === 1 && (this.y + 20)/83 === 1)||(this.x/101 === 5 && (this.y + 20)/83 === 1)||(this.x/101 === 5 && (this.y + 20)/83 === 1)||(this.x/101 === 5 && (this.y + 20)/83 === 5)) {
             this.onBridge = false;
         }
+
+    //add sound effect 
+    
+    var oldinWater = this.inWater;
     this.inWater = this.isinWater(this.x, this.y);
+    if(level ===1 && this.inWater && !oldinWater){
+        enterWaterSound.play();
+    }
     // console.log(" After x = " + this.x/101 + ", y = " + (this.y + 20)/83);
     // console.log("After I am in the water : " + this.inWater);
     // console.log(" After I am underBridge : " + this.underBridge);
@@ -314,6 +359,7 @@ function meetTrees(playerX, playerY) {
     var col = playerX / 101;
     for(var i = 0; i < treeLoc.length; i++) {
         if(row == treeLoc[i][1] && col == treeLoc[i][0]) {
+            errorSound.play();
             return true;
         }
     }
@@ -324,6 +370,7 @@ function meetRocks(playerX, playerY) {
     var col = playerX / 101;
     for(var i = 0; i < rockLoc.length; i++) {
         if(row == rockLoc[i][1] && col == rockLoc[i][0]) {
+            errorSound.play();
             return true;
         }
     }
@@ -334,6 +381,7 @@ function meetChests(playerX, playerY) {
     var col = playerX / 101;
     for(var i = 0; i < chestLoc.length; i++) {
         if(row == chestLoc[i][1] && col == chestLoc[i][0] && layers[level].keyGet > 0 && layers[level].chestOpen[i] == false) {
+            openChestSound.play();
             layers[level].chestOpen[i] = true;
             layers[level].keyGet--;
             console.log("i = " + i);
@@ -341,10 +389,13 @@ function meetChests(playerX, playerY) {
             console.log("hiddenGemIdx = " + layers[level].hiddenGemIdx);
             
         }else if(row == chestLoc[i][1] && col == chestLoc[i][0] && layers[level].chestOpen[i] == true && i == layers[level].hiddenKeyIdx && layers[level].hiddenKeyGet === 0) {
+            getFromChestSound.play();
+            openDoorSound.play();
              console.log("get hidden key");
             layers[level].hiddenKeyGet++;
             //layers[level].keyGet++;
         }else if(row == chestLoc[i][1] && col == chestLoc[i][0] && layers[level].chestOpen[i] == true && i == layers[level].hiddenGemIdx && layers[level].hiddenGemGet === 0) {
+            getFromChestSound.play();
             console.log("get hidden gem");
             layers[level].hiddenGemGet++;
             layers[level].score += 150;
@@ -449,26 +500,31 @@ window.addEventListener("keydown", function(e) {
 });
 $('#char-boy').click(function(){
     charPicker = 0;
+    buttonSound.play();
     $('.charPicker').css('display', 'none');
     $('.row').css('display', 'block');
 });
 $('#char-cat-girl').click(function(){
     charPicker = 1;
+    buttonSound.play();
     $('.charPicker').css('display', 'none');
     $('.row').css('display', 'block');
 });
 $('#char-horn-girl').click(function(){
     charPicker = 2;
+    buttonSound.play();
     $('.charPicker').css('display', 'none');
     $('.row').css('display', 'block');
 });
 $('#char-pink-girl').click(function(){
     charPicker = 3;
+    buttonSound.play();
     $('.charPicker').css('display', 'none');
     $('.row').css('display', 'block');
 });
 $('#char-princess-girl').click(function(){
     charPicker = 4;
+    buttonSound.play();
     $('.charPicker').css('display', 'none');
     $('.row').css('display', 'block');
 });

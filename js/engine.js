@@ -68,6 +68,7 @@ var Engine = (function(global) {
      var temp = 0;
      $('#restart').click(function(){
         level = 0;
+        buttonSound.play();
         reset(level);
         player.reset();
         console.log("restart level = 0");
@@ -104,12 +105,15 @@ var Engine = (function(global) {
                 console.log("enemy.x = " + enemy.x);
                 console.log("enemy.y = " + enemy.y);
                 //setTimeout(function() {player.reset()}, 50);
+                collisionSound.play();
                 player.reset();
                 layers[level].life--;
                 if(layers[level].life === 0) {
                     reset(level);
-        }
-               
+                    gameOverSound.play();
+                }else {
+                    collisionSound.play();
+                }
 
             }
         });
@@ -118,9 +122,14 @@ var Engine = (function(global) {
         if(player.x/101 === 6 && (player.y + 20)/83 === 0) {
             level++;
             if(level <=2) {
+                if(level ===1 || level ===2){
+                    console.log("level = " + level);
+                    nextLevelSound.play();
+                }
                 player.reset();
                 reset(level);
             } else {
+                congradsSound.play();
                 $('.row').css('display', 'none');
                 $('.ending').css('display', 'block');
                 console.log("totalScore = " + totalScore);
