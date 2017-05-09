@@ -457,7 +457,7 @@ var bug2 = new Enemy();
 var bug3 = new Enemy();
 var bug4 = new Enemy();
 //var bug5 = new Enemy();
-var allEnemies = [];//[bug1, bug2, bug3, bug4];
+var allEnemies = [bug1, bug2, bug3, bug4];
 var player = new Player();
 
 
