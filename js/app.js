@@ -12,7 +12,7 @@ var openDoorSound = new Audio("sound/openDoor.wav");
 var errorSound = new Audio("sound/error.wav");
 var collisionSound = new Audio("sound/collision.wav");
 var gameOverSound = new Audio("sound/gameOver.wav");
-var nextLevelSound = new Audio("sound/nextLevel2.mp3");
+var nextLevelSound = new Audio("sound/nextLevel.wav");
 var buttonSound = new Audio("sound/button.wav");
 var congradsSound = new Audio("sound/congrads.wav");
 // var bgm = new Audio("sound/00.wav");
@@ -457,7 +457,7 @@ var bug2 = new Enemy();
 var bug3 = new Enemy();
 var bug4 = new Enemy();
 //var bug5 = new Enemy();
-var allEnemies = [bug1, bug2, bug3, bug4];
+var allEnemies = [];//[bug1, bug2, bug3, bug4];
 var player = new Player();
 
 
