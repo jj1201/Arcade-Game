@@ -43,7 +43,7 @@ body {
 	display: inline-block;
 }
 .title {
-	float: center;
+	/*float: center;*/
 	font-size: 60px;
 	color: #FF0000;
 }

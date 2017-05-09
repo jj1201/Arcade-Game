@@ -2,18 +2,18 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Effective JavaScript: Frogger</title>
+    <title>Bug Invasion</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Ravi+Prakash" rel="stylesheet">
 </head>
 <body>
 	<div class="charPicker">
 		<header>Pick a character : </header>
-		<button id="char-boy"><img src="images/char-boy.png"></button>
-		<button id="char-cat-girl"><img src="images/char-cat-girl.png"></button>
-		<button id="char-horn-girl"><img src="images/char-horn-girl.png"></button>
-		<button id="char-pink-girl"><img src="images/char-pink-girl.png"></button>
-		<button id="char-princess-girl"><img src="images/char-princess-girl.png"></button>		
+		<button id="char-boy"><img src="images/char-boy.png" alt="boy"></button>
+		<button id="char-cat-girl"><img src="images/char-cat-girl.png" alt="cat girl"></button>
+		<button id="char-horn-girl"><img src="images/char-horn-girl.png" alt="horn girl"></button>
+		<button id="char-pink-girl"><img src="images/char-pink-girl.png" alt="pink girl"></button>
+		<button id="char-princess-girl"><img src="images/char-princess-girl.png" alt="princess girl"></button>		
 	</div>
 	<div class="row">
 		<div class="instruction"><span>Instruction:</span>
@@ -22,7 +22,7 @@
 			<li class="rule">Get all the gems on the map to enable the keys.</li>
 			<li class="rule">On the 3rd level, press 'space' and arrow key together to jump over walls</li>
 		</ul>
-		<p>have fun!</p>
+		<p>Have fun!</p>
 		</div>
 		<div class="canvas_container">
 			<div class="game_title"><span class="title"> Bug Invasion </span> <span class="level standard-font
@@ -40,7 +40,7 @@
 	</div>
 	<div class="ending">
 		<p>Congradulations! Your total score is <span class = "totalScore"></span>!</p>
-		<button class="astext standard-font" id="restart">Restart</input>
+		<button class="astext standard-font" id="restart">Restart</button>
 	</div>
 	
 	<script src="https://code.jquery.com/jquery.min.js"></script>
