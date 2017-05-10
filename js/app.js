@@ -499,32 +499,32 @@ window.addEventListener("keydown", function(e) {
     
 });
 $('#char-boy').click(function(){
-    charPicker = 0;
     buttonSound.play();
+    charPicker = 0;
     $('.charPicker').css('display', 'none');
     $('.row').css('display', 'block');
 });
 $('#char-cat-girl').click(function(){
-    charPicker = 1;
     buttonSound.play();
+    charPicker = 1;
     $('.charPicker').css('display', 'none');
     $('.row').css('display', 'block');
 });
 $('#char-horn-girl').click(function(){
-    charPicker = 2;
     buttonSound.play();
+    charPicker = 2;
     $('.charPicker').css('display', 'none');
     $('.row').css('display', 'block');
 });
 $('#char-pink-girl').click(function(){
-    charPicker = 3;
     buttonSound.play();
+    charPicker = 3;
     $('.charPicker').css('display', 'none');
     $('.row').css('display', 'block');
 });
 $('#char-princess-girl').click(function(){
-    charPicker = 4;
     buttonSound.play();
+    charPicker = 4;
     $('.charPicker').css('display', 'none');
     $('.row').css('display', 'block');
 });
