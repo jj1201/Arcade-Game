@@ -4,8 +4,8 @@ it's a webpage game written mainly in javascript. The goal is to get as many gem
 
 ### Screenshots
 
-![Image of screenshot1](images/screenshot1.png)
-![Image of screenshot2](images/screenshot2.png)
+![Image of screenshot1](images/screenshot3.png)
+![Image of screenshot2](images/screenshot1.png)
 ### How to play
 
  * Use 'up', 'down', 'left', 'right' to control the character.
