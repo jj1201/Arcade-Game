@@ -15,12 +15,13 @@ var gameOverSound = new Audio("sound/gameOver.wav");
 var nextLevelSound = new Audio("sound/nextLevel.wav");
 var buttonSound = new Audio("sound/button.wav");
 var congradsSound = new Audio("sound/congrads.wav");
-// var bgm = new Audio("sound/00.wav");
-// bgm.addEventListener('ended', function() {
-//     this.currentTime = 0;
-//     this.play();
-// }, false);
-// bgm.play();
+var bgm = new Audio("sound/bgm.mp3");
+bgm.volume = 0.2;
+bgm.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+
 var layers = [
     {
         score : 0,
@@ -499,35 +500,28 @@ window.addEventListener("keydown", function(e) {
     
 });
 $('#char-boy').click(function(){
-    buttonSound.play();
-    charPicker = 0;
-    $('.charPicker').css('display', 'none');
-    $('.row').css('display', 'block');
+    buttonClick(0)
 });
 $('#char-cat-girl').click(function(){
-    buttonSound.play();
-    charPicker = 1;
-    $('.charPicker').css('display', 'none');
-    $('.row').css('display', 'block');
+    buttonClick(1)
 });
 $('#char-horn-girl').click(function(){
-    buttonSound.play();
-    charPicker = 2;
-    $('.charPicker').css('display', 'none');
-    $('.row').css('display', 'block');
+    buttonClick(2)
 });
 $('#char-pink-girl').click(function(){
-    buttonSound.play();
-    charPicker = 3;
-    $('.charPicker').css('display', 'none');
-    $('.row').css('display', 'block');
+    buttonClick(3)
 });
 $('#char-princess-girl').click(function(){
-    buttonSound.play();
-    charPicker = 4;
+    buttonClick(4)
+});
+
+function buttonClick(index) {
+     buttonSound.play();
+    charPicker = index;
     $('.charPicker').css('display', 'none');
     $('.row').css('display', 'block');
-});
+    bgm.play();
+}
 
 
 

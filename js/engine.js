@@ -129,6 +129,7 @@ var Engine = (function(global) {
                 player.reset();
                 reset(level);
             } else {
+                bgm.pause();
                 congradsSound.play();
                 $('.row').css('display', 'none');
                 $('.ending').css('display', 'block');

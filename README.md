@@ -18,4 +18,5 @@ it's a webpage game written mainly in javascript. The goal is to get as many gem
 ### Links
 
 The art assets are from [here](http://www.lostgarden.com/search/label/free%20game%20graphics).<br>
-The sound effects are from [Freesound](https://www.freesound.org/home/).
+The sound effects are from [Freesound](https://www.freesound.org/home/).<br>
+The background music is from Naruto-Fooling mode.
