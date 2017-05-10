@@ -377,15 +377,18 @@ var Engine = (function(global) {
             
         };
         //draw keys
-        for(var i = 0; i < keyLoc.length; i++) {
-            var col = keyLoc[i][0];
-            var row = keyLoc[i][1];
-            if(col != -1 && row != -1 && layers[level].gemGet < layers[level].gemNum) {
-                ctx.drawImage(Resources.get(keyImage[1]), col * 101 + 10, row * 83 + 10, 101 * 0.75, 171*0.75);
-            } else if(col != -1 && row != -1 && layers[level].gemGet === layers[level].gemNum) {
-                ctx.drawImage(Resources.get(keyImage[0]), col * 101 + 10, row * 83 + 10, 101 * 0.75, 171*0.75);
-            }
-        };
+        if(level === 0 || level === 2) {
+            for(var i = 0; i < keyLoc.length; i++) {
+                var col = keyLoc[i][0];
+                var row = keyLoc[i][1];
+                if(col != -1 && row != -1 && layers[level].gemGet < layers[level].gemNum) {
+                    ctx.drawImage(Resources.get(keyImage[1]), col * 101 + 10, row * 83 + 10, 101 * 0.75, 171*0.75);
+                } else if(col != -1 && row != -1 && layers[level].gemGet === layers[level].gemNum) {
+                    ctx.drawImage(Resources.get(keyImage[0]), col * 101 + 10, row * 83 + 10, 101 * 0.75, 171*0.75);
+                }
+            };
+        }
+        
          //draw trees
         //console.log(treeLoc.length);
         for(var i = 0; i < treeLoc.length; i++) {
@@ -413,6 +416,16 @@ var Engine = (function(global) {
                     ctx.drawImage(Resources.get(bridgeImage[j %3]), col* 101, row * 83 - 40);
                 }
             }
+            //draw keys
+            for(var i = 0; i < keyLoc.length; i++) {
+                var col = keyLoc[i][0];
+                var row = keyLoc[i][1];
+                if(col != -1 && row != -1 && layers[level].gemGet < layers[level].gemNum) {
+                    ctx.drawImage(Resources.get(keyImage[1]), col * 101 + 10, row * 83 + 40, 101 * 0.75, 171*0.75);
+                } else if(col != -1 && row != -1 && layers[level].gemGet === layers[level].gemNum) {
+                    ctx.drawImage(Resources.get(keyImage[0]), col * 101 + 10, row * 83 + 40, 101 * 0.75, 171*0.75);
+                }
+            };
             
         }
         if(level === 1 && player.underBridge) {
@@ -465,7 +478,7 @@ var Engine = (function(global) {
                 layers[1].hiddenKeyIdx = 0;
                 layers[1].chestOpen = [false, false];
                 layers[1].gemLoc =[[6, 4],[3,5], [3, 2]];
-                layers[1].keyLoc = [[4, 4],[2,2]];
+                layers[1].keyLoc = [[1, 2],[5, 2]];
                 layers[1].keyNum = 2;
                 layers[1].gemNum = 3;
                 layers[1].keyGet = 0;

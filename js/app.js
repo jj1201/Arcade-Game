@@ -54,7 +54,7 @@ var layers = [
         hiddenKeyIdx : 0,
         chestOpen : [false, false],
         gemLoc :[[6, 4],[3,5], [3, 2]],
-        keyLoc : [[4, 4],[2,2]],
+        keyLoc : [[1, 2],[5, 2]],
         keyNum : 2,
         gemNum : 3,
         keyGet : 0,
@@ -192,7 +192,7 @@ Player.prototype.update = function() {
     //get yellow keys
     if(layers[level].gemGet == layers[level].gemNum) {
         for(var i = 0; i < keyLoc.length; i++) {
-            if(keyLoc[i][1] == (this.y + 20)/83 && keyLoc[i][0] == this.x/101) {
+            if(keyLoc[i][1] == (this.y + 20)/83 && keyLoc[i][0] == this.x/101 && (level === 0 || level === 2 || (level === 1 && player.onBridge))) {
                 console.log("get key");
                 getKeySound.play();
                 keyLoc[i][0] = -1;
