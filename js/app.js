@@ -1,6 +1,6 @@
 
 var canvasWidth = 707;
-var level = 0;
+var level = 2;
 var totalScore = 0;
 var walksound = new Audio("sound/walk.wav");
 var enterWaterSound = new Audio("sound/enterWater.wav");
@@ -105,7 +105,7 @@ var Enemy = function() {
     this.row = Math.floor(Math.random() * enermyRow) + 1;
     //speed's range is from 10 to 39
     this.speedOpt = Math.floor(Math.random() * 5);
-    this.speed = [150, 200, 250, 300, 350];
+    this.speed = [150, 200, 250, 300, 300];
     
     if(level === 2 && (this.row === 2 || this.row === 4)) {
           this.row--;
